@@ -27,6 +27,7 @@ SECRET_KEY = 'uow*h^*50&e=wg(aee9%j0i@eu)-4b(*w=o8$4nd_7sdaysm!q'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
     'credentials',
+    'management',
 ]
 
 CORS_ALLOW_METHODS = [
@@ -58,10 +60,8 @@ CORS_ALLOW_HEADERS = default_headers + (
     'contenttype',
 )
 
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-
-# CORS_ORIGIN_ALLOW_ALL=True
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
@@ -72,7 +72,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         # By default we set everything to admin,
         #   then open endpoints on a case-by-case basis
-        'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.AllowAny',
     ),
     'TEST_REQUEST_RENDERER_CLASSES': (
         'rest_framework.renderers.MultiPartRenderer',
